@@ -127,4 +127,15 @@ export class UsersRepository implements IUsersRepository {
       });
     }
   }
+
+  public async update(data: User): Promise<User> {
+    const user = await this.ormRepository.update({
+      where: {
+        id: data.id,
+      },
+      data,
+    });
+
+    return user;
+  }
 }

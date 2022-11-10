@@ -28,11 +28,11 @@ export class UpdateUserUseCase {
     if (userAlreadyExists && userAlreadyExists.id !== user.id)
       throw new AppError('User already exists');
 
-    const updatedUser = await this.usersRepository.create({
-      email,
-      name,
-      password,
-    });
+    user.name = name || user.name;
+    user.email = email || user.email;
+    user.password = password || user.password;
+
+    const updatedUser = await this.usersRepository.update(user);
 
     return updatedUser;
   }

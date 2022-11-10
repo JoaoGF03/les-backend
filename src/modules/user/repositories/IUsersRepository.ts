@@ -14,4 +14,5 @@ export interface IUsersRepository {
     teamId: string,
     invitation: Invitation,
   ): Promise<void>;
+  update(data: User): Promise<User>;
 }
