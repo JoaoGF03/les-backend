@@ -1015,6 +1015,10 @@
             "type": "string",
             "example": "Test"
           },
+          "sportId": {
+            "type": "string",
+            "example": "86633558-9689-4c71-93c9-3f306de4c4a7"
+          },
           "createdBy": {
             "type": "string",
             "example": "86633558-9689-4c71-93c9-3f306de4c4a7"
@@ -1140,6 +1144,10 @@
           "description": {
             "type": "string",
             "example": "Test"
+          },
+          "sportId": {
+            "type": "string",
+            "example": "86633558-9689-4c71-93c9-3f306de4c4a7"
           }
         }
       }

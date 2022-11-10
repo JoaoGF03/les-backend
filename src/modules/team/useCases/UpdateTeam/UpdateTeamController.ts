@@ -6,7 +6,7 @@ import { UpdateTeamUseCase } from './UpdateTeamUseCase';
 export class UpdateTeamController {
   async handle(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
-    const { name, description } = request.body;
+    const { name, description, sportId } = request.body;
 
     const updateTeamUseCase = container.resolve(UpdateTeamUseCase);
 
@@ -14,6 +14,7 @@ export class UpdateTeamController {
       id,
       name,
       description,
+      sportId,
     });
 
     return response.status(201).json(category);

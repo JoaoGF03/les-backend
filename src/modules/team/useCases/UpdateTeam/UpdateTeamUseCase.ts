@@ -11,12 +11,13 @@ export class UpdateTeamUseCase {
   constructor(
     @inject('TeamsRepository')
     private teamsRepository: ITeamsRepository,
-  ) { }
+  ) {}
 
   public async execute({
     id,
     name,
     description,
+    sportId,
   }: IUpdateTeamDTO): Promise<Team> {
     const team = await this.teamsRepository.findById(id);
 
@@ -25,11 +26,13 @@ export class UpdateTeamUseCase {
     if (name) {
       const teamAlreadyExists = await this.teamsRepository.findByName(name);
 
-      if (teamAlreadyExists && teamAlreadyExists.id !== team.id) throw new AppError('Team name already in use');
+      if (teamAlreadyExists && teamAlreadyExists.id !== team.id)
+        throw new AppError('Team name already in use');
     }
 
-    team.name = name || team.name
-    team.description = description || team.description
+    team.name = name || team.name;
+    team.description = description || team.description;
+    team.sportId = sportId || team.sportId;
 
     const category = this.teamsRepository.update(team);
 

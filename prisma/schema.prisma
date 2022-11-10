@@ -33,6 +33,9 @@ model Team {
   users  User[]
   events Event[]
 
+  sportId String?
+  Sport   Sport?  @relation(fields: [sportId], references: [id])
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -44,6 +47,7 @@ model Sport {
   name String @unique
 
   events Event[]
+  teams  Team[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

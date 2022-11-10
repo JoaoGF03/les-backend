@@ -13,12 +13,14 @@ export class TeamsRepository implements ITeamsRepository {
     name,
     description,
     createdBy,
+    sportId,
   }: ICreateTeamDTO): Promise<Team> {
     const team = await this.ormRepository.create({
       data: {
         name,
         description,
         createdBy,
+        sportId,
       },
     });
 
@@ -30,6 +32,7 @@ export class TeamsRepository implements ITeamsRepository {
       include: {
         users: true,
         events: true,
+        Sport: true,
       },
     });
 
@@ -92,6 +95,7 @@ export class TeamsRepository implements ITeamsRepository {
       include: {
         users: true,
         invitations: true,
+        Sport: true,
       },
     });
 
@@ -110,6 +114,7 @@ export class TeamsRepository implements ITeamsRepository {
       include: {
         users: true,
         invitations: true,
+        Sport: true,
       },
     });
 
@@ -120,6 +125,7 @@ export class TeamsRepository implements ITeamsRepository {
     id,
     name,
     description,
+    sportId,
   }: IUpdateTeamDTO): Promise<Team> {
     const team = await this.ormRepository.update({
       where: {
@@ -128,6 +134,7 @@ export class TeamsRepository implements ITeamsRepository {
       data: {
         name,
         description,
+        sportId,
       },
     });
 

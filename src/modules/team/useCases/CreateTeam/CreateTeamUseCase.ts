@@ -17,6 +17,7 @@ export class CreateTeamUseCase {
     name,
     description,
     createdBy,
+    sportId,
   }: ICreateTeamDTO): Promise<Team> {
     const teamAlreadyExists = await this.teamsRepository.findByName(name);
 
@@ -28,6 +29,7 @@ export class CreateTeamUseCase {
       name,
       description,
       createdBy,
+      sportId,
     });
 
     return category;

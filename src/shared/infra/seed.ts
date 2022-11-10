@@ -88,6 +88,11 @@ export const seed = async (_request: Request, response: Response) => {
       name: teamsData[0].name,
       description: teamsData[0].description,
       createdBy: users[0].id,
+      Sport: {
+        connect: {
+          name: sportsData[0],
+        },
+      },
       users: {
         connect: [
           {
@@ -113,6 +118,11 @@ export const seed = async (_request: Request, response: Response) => {
       name: teamsData[1].name,
       description: teamsData[1].description,
       createdBy: users[4].id,
+      Sport: {
+        connect: {
+          name: sportsData[0],
+        },
+      },
       users: {
         connect: [
           {
