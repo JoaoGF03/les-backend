@@ -9,3 +9,4 @@ para criar as tabelas no banco local
 
 `yarn dev ou npm run dev`
 para rodar o projeto
+teste
