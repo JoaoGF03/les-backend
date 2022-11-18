@@ -21,17 +21,6 @@ export class FindMyEventsUseCase {
 
     const events = await this.eventsRepository.findMyEvents(id);
 
-    try {
-      const futureEvents = events.filter(event => {
-        const eventDate = new Date(event.day);
-        const currentDate = new Date();
-
-        return eventDate > currentDate;
-      });
-
-      return futureEvents;
-    } catch (error) {
-      return events;
-    }
+    return events;
   }
 }
