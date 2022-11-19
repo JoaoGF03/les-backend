@@ -48,6 +48,11 @@ export class EventsRepository implements IEventsRepository {
         teams: {
           include: {
             users: true,
+            Sport: {
+              select: {
+                name: true,
+              },
+            },
           },
         },
       },
