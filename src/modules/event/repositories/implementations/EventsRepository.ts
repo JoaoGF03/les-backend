@@ -135,6 +135,37 @@ export class EventsRepository implements IEventsRepository {
     return events;
   }
 
+  public async findEventsImIn(userId: string): Promise<
+    (Event & {
+      Sport: Sport;
+      teams: Team[];
+    })[]
+  > {
+    const events = await this.ormRepository.findMany({
+      where: {
+        teams: {
+          some: {
+            users: {
+              some: {
+                id: userId,
+              },
+            },
+          },
+        },
+      },
+      include: {
+        Sport: true,
+        teams: {
+          include: {
+            users: true,
+          },
+        },
+      },
+    });
+
+    return events;
+  }
+
   public async update({
     day,
     time,

@@ -11,5 +11,6 @@ export interface IEventsRepository {
   delete(id: string): Promise<void>;
   addTeam({ teamId, eventId }: IAddTeamToEventDTO): Promise<Event>;
   findMyEvents(userId: string): Promise<Event[]>;
+  findEventsImIn(userId: string): Promise<Event[]>;
   update(data: IUpdateEventDTO): Promise<Event>;
 }
