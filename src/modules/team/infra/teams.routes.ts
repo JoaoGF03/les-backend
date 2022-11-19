@@ -2,9 +2,9 @@ import { Router } from 'express';
 
 import { AddUserToTeamController } from '../useCases/AddUserToTeam/AddUserToTeamController';
 import { CreateTeamController } from '../useCases/CreateTeam/CreateTeamController';
+import { DeleteTeamController } from '../useCases/DeleteTeam/DeleteTeamController';
 import { FindAllTeamsController } from '../useCases/FindAllTeams/FindAllTeamsController';
 import { FindMyTeamsController } from '../useCases/FindMyTeams/FindMyTeamsController';
-import { FindTeamByNameController } from '../useCases/FindTeamByName/FindTeamByNameController';
 import { FindTeamsImInController } from '../useCases/FindTeamsImIn/FindTeamsImInController';
 import { UpdateTeamController } from '../useCases/UpdateTeam/UpdateTeamController';
 
@@ -13,17 +13,17 @@ export const teamsRouter = Router();
 const createTeamController = new CreateTeamController();
 const addUserToTeamController = new AddUserToTeamController();
 const findAllTeamsController = new FindAllTeamsController();
-const findTeamByNameController = new FindTeamByNameController();
 const findMyTeamsController = new FindMyTeamsController();
 const findTeamsImInController = new FindTeamsImInController();
 const updateTeamController = new UpdateTeamController();
+const deleteTeamController = new DeleteTeamController();
 
 teamsRouter.post('/', createTeamController.handle);
 teamsRouter.post('/addUser', addUserToTeamController.handle);
 
 teamsRouter.get('/', findAllTeamsController.handle);
-// teamsRouter.get('/findTeamByName', findTeamByNameController.handle);
 teamsRouter.get('/findMyTeams/:userId', findMyTeamsController.handle);
 teamsRouter.get('/findTeamsImIn/:userId', findTeamsImInController.handle);
 
 teamsRouter.put('/:id', updateTeamController.handle);
+teamsRouter.delete('/:id', deleteTeamController.handle);

@@ -455,6 +455,28 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "Team"
+        ],
+        "summary": "Delete team by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Team ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content"
+          }
+        }
       }
     },
     "/teams/findMyTeams/{userId}": {
