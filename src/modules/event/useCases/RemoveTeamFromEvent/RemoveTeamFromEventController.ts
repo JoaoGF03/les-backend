@@ -9,11 +9,11 @@ export class RemoveTeamFromEventController {
 
     const removeTeamFromUseCase = container.resolve(RemoveTeamFromEventUseCase);
 
-    const category = await removeTeamFromUseCase.execute({
+    await removeTeamFromUseCase.execute({
       teamId: String(teamId),
       eventId: String(eventId),
     });
 
-    return response.status(201).json(category);
+    return response.status(204).send();
   }
 }

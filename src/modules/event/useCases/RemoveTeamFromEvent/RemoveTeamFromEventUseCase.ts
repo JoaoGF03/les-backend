@@ -20,7 +20,7 @@ export class RemoveTeamFromEventUseCase {
     private eventsRepository: IEventsRepository,
   ) {}
 
-  public async execute({ teamId, eventId }: IRemoveTeamFromEventDTO): Promise<Team> {
+  public async execute({ teamId, eventId }: IRemoveTeamFromEventDTO): Promise<void> {
     const eventsExistes = await this.eventsRepository.findById(eventId);
 
     if (!eventsExistes) throw new AppError('Event not found');
@@ -29,8 +29,6 @@ export class RemoveTeamFromEventUseCase {
 
     if (!teamExists) throw new AppError('Team not found');
 
-    const event = await this.eventsRepository.removeTeam({ teamId, eventId });
-
-    return event;
+    await this.eventsRepository.removeTeam({ teamId, eventId });
   }
 }
