@@ -1,6 +1,7 @@
 import { Event } from '@prisma/client';
 
 import { IAddTeamToEventDTO } from '../useCases/AddTeamToEvent/AddTeamToEventUseCase';
+import { IRemoveTeamFromEventDTO } from '../useCases/RemoveTeamFromEvent/RemoveTeamFromEventUseCase';
 import { ICreateEventDTO, IUpdateEventDTO } from './EventsDTO';
 
 export interface IEventsRepository {
@@ -13,4 +14,5 @@ export interface IEventsRepository {
   findMyEvents(userId: string): Promise<Event[]>;
   findEventsImIn(userId: string): Promise<Event[]>;
   update(data: IUpdateEventDTO): Promise<Event>;
+  removeTeam(data: IRemoveTeamFromEventDTO): Promise<void>;
 }

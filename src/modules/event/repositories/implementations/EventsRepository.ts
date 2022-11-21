@@ -3,6 +3,7 @@ import { Event, Sport, Team } from '@prisma/client';
 import { prisma } from '@shared/infra/prisma';
 
 import { IAddTeamToEventDTO } from '@modules/event/useCases/AddTeamToEvent/AddTeamToEventUseCase';
+import { IRemoveTeamFromEventDTO } from '@modules/event/useCases/RemoveTeamFromEvent/RemoveTeamFromEventUseCase';
 
 import { ICreateEventDTO, IUpdateEventDTO } from '../EventsDTO';
 import { IEventsRepository } from '../IEventsRepository';
@@ -192,5 +193,20 @@ export class EventsRepository implements IEventsRepository {
     });
 
     return event;
+  }
+
+  public async removeTeam({teamId, eventId}: IRemoveTeamFromEventDTO): Promise<void> {
+    await this.ormRepository.update({
+      where: {
+        id: eventId,
+      },
+      data: {
+        teams: {
+          disconnect: {
+            id: teamId,
+          },
+        },
+      }
+    });
   }
 }
