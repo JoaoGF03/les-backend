@@ -861,6 +861,35 @@
         "security": []
       }
     },
+    "/events/removeTeam": {
+      "post": {
+        "tags": [
+          "Event"
+        ],
+        "summary": "Remove team from event",
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "query",
+            "description": "Event ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "teamId",
+            "in": "query",
+            "description": "Team ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": []
+      }
+    },
     "/sports": {
       "post": {
         "tags": [
